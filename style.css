@@ -57,7 +57,6 @@ input {
 
 .category-block{
     display: flex;
-    /*min-height: 100px;*/
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: flex-start;
@@ -115,4 +114,19 @@ a {
     position: relative;
     top: -39px;
     left: 60px;
+}
+
+.footer {
+    color:  #74747e;
+    font-size: 14px;
+    margin-top: 10px;
+    padding: 10px;
+}
+
+#copyright {
+    text-align: right;
+}
+
+.contacts {
+    float: left;
 }
