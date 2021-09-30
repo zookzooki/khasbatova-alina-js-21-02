@@ -6,94 +6,113 @@
     <title>Home work</title>
 </head>
 <body>
-<div id="wrapper">
-    <div class="header">
-    Интернет-магазин "Не только красивое"
-</div>
-    <div class="main-block">
-        <div class="sidebar color-background">
-        <p class="fish-type">Морская рыба</p>
-        <p><label>
-            <input type="checkbox">
-        </label>Акула</p>
-        <p><label>
-            <input type="checkbox">
-        </label>Окунь</p>
-        <p><label>
-            <input type="checkbox">
-        </label>Палтус</p>
-        <p><label>
-            <input type="checkbox">
-        </label>Треска</p>
-        <p class="fish-type">Пресноводная рыба</p>
+<div class="page-container">
+    <h1 class="header">
+        Интернет-магазин "Не только красивое"
+    </h1>
+    <div class="sidebar sidebar__theme_default">
+        <p class="sidebar__fish-type">Морская рыба</p>
+        <p>
+            <label>
+                <input type="checkbox">
+                Акула
+            </label>
+        </p>
+        <p>
+            <label>
+                <input type="checkbox">
+                Окунь
+            </label>
+        </p>
+        <p>
+            <label>
+                <input type="checkbox">
+                Палтус
+            </label>
+        </p>
+        <p>
+            <label>
+                <input type="checkbox">
+                Треска
+            </label>
+        </p>
+        <p class="sidebar__fish-type">Пресноводная рыба</p>
         <p><label>
             <input type="checkbox">
         </label>Белоглазка</p>
-        <p><label>
-            <input type="checkbox">
-        </label>Осётр</p>
-        <p><label>
-            <input type="checkbox">
-        </label>Речной угорь</p>
-        <p><label>
-            <input type="checkbox">
-        </label>Налим</p>
+        <p>
+            <label>
+                <input type="checkbox">
+                Осётр
+            </label>
+        </p>
+        <p>
+            <label>
+                <input type="checkbox">
+                Речной угорь
+            </label>
+        </p>
+        <p>
+            <label>
+                <input type="checkbox">
+                Налим
+            </label>
+        </p>
     </div>
-        <div class="content">
-        <div class="text">
+    <div class="content">
+        <div class="content__text">
             <h1>Рыбы на любой вкус</h1>
             <p>Мы продаем рыбов, а не только показываем!</p>
         </div>
-        <div class="category-block" >
-            <div class="category-item color-background">
+        <div class="content__fish-type" >
+            <div class="fish-type__item fish-type__item__theme_default">
                 <a href="#">Замороженные рыбы</a>
                 <p>Мы заморозили рыбов для вас</p>
             </div>
-            <div class="category-item color-background">
+            <div class="fish-type__item fish-type__item__theme_default">
                 <a href="#">Живые рыбы</a>
                 <p>На кухню или разведение</p>
             </div>
         </div>
-        <div class="popular-block" >
+        <div>
             <h2>Популярные</h2>
-            <div class="popular-container">
-                <div class="popular-item color-background">
-                    <div class="picture"></div>
-                    <div><a href="#" >Палтус</a></div>
-                    <button>Купить</button>
+            <div class="popular">
+                <div class="popular__item color-background">
+                    <div class="popular__item__picture"></div>
+                    <div><a class="popular__item__name" href="#" >Палтус</a></div>
+                    <button class="popular__item__button">Купить</button>
                 </div>
-                <div class="popular-item color-background">
-                    <div class="picture"></div>
-                    <div><a href="#">Сёмга</a></div>
-                    <button>Купить</button>
+                <div class="popular__item color-background">
+                    <div class="popular__item__picture"></div>
+                    <div><a class="popular__item__name" href="#">Сёмга</a></div>
+                    <button class="popular__item__button">Купить</button>
                 </div>
-                <div class="popular-item color-background">
-                    <div class="picture"></div>
-                    <div><a href="#" >Сом</a></div>
-                    <button>Купить</button>
+                <div class="popular__item color-background">
+                    <div class="popular__item__picture"></div>
+                    <div><a class="popular__item__name" href="#" >Сом</a></div>
+                    <button class="popular__item__button">Купить</button>
                 </div>
-                <div class="popular-item color-background">
-                    <div class="picture"></div>
-                    <div><a href="#" >Мойва</a></div>
-                    <button>Купить</button>
+                <div class="popular__item color-background">
+                    <div class="popular__item__picture"></div>
+                    <div><a class="popular__item__name" href="#" >Мойва</a></div>
+                    <button class="popular__item__button">Купить</button>
                 </div>
-                <div class="popular-item color-background">
-                    <div class="picture"></div>
-                    <div><a href="#" >Сельдь</a></div>
-                    <button>Купить</button>
+                <div class="popular__item color-background">
+                    <div class="popular__item__picture"></div>
+                    <div><a class="popular__item__name" href="#" >Сельдь</a></div>
+                    <button class="popular__item__button">Купить</button>
                 </div>
-                <div class="popular-item color-background">
-                    <div class="picture"></div>
-                    <div><a href="#" >Тунец</a></div>
-                    <button>Купить</button>
+                <div class="popular__item color-background">
+                    <div class="popular__item__picture"></div>
+                    <div><a class="popular__item__name" href="#" >Тунец</a></div>
+                    <button class="popular__item__button">Купить</button>
                 </div>
             </div>
         </div>
     </div>
-    </div>
     <div class="footer color-background">
-        <p class="contacts">Контакты</p>
-        <p id="copyright">© 2021 ИП Рыбов О.А.</p>
+        <p class="footer__contacts">Контакты</p>
+        <p class="footer__copyright">© 2021 ИП Рыбов О.А.</p>
     </div>
 </div>
 </body>
