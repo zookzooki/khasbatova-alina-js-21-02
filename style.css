@@ -2,6 +2,10 @@ body {
     font-family: sans-serif;
 }
 
+.body__theme_dark {
+    background: #1b1b1c;
+}
+
 p, h1, h2 {
     margin: 0;
 }
@@ -36,8 +40,18 @@ a {
     font-weight: 600;
 }
 
-.color-background, .sidebar__theme_default, .fish-type__item__theme_default {
+.header__theme_dark {
+    background: #063420;
+    color: #c2c2c4;
+}
+
+.popular__item__theme_default, .sidebar__theme_default, .fish-type__item__theme_default, .footer__theme_default {
     background: #f1f0f0;
+}
+
+.popular__item__theme_dark, .sidebar__theme_dark, .fish-type__item__theme_dark, .footer__theme_dark {
+    background: #424141;
+    color: #c2c2c4;
 }
 
 /*Сайдбар*/
@@ -62,6 +76,10 @@ input {
 
 .content__text, h2 {
     padding-left: 20px;
+}
+
+.content__text__theme_dark, .popular_text__theme_dark {
+    color: #c2c2c4;
 }
 
 .content__fish-type{
