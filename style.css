@@ -34,29 +34,15 @@ a {
     background: #0a9c5c;
     display: flex;
     align-items: center;
-    justify-content: space-between;
     font-size: 20px;
     color: white;
-    padding: 0 10px;
+    padding-left: 10px;
     font-weight: 600;
-}
-
-.header__text {
-    font-size: 20px;
 }
 
 .header__theme_dark {
     background: #063420;
     color: #c2c2c4;
-}
-
-.loader {
-    border: 5px solid #EAF0F6;
-    border-radius: 50%;
-    border-top: 5px solid #1895fa;
-    width: 10px;
-    height: 10px;
-    animation: spinner 4s linear infinite;
 }
 
 .popular__item__theme_default, .sidebar__theme_default, .fish-type__item__theme_default, .footer__theme_default {
@@ -134,17 +120,6 @@ input {
     margin: 0 0 10px 10px;
     padding: 8px 10px;
     width: 170px;
-}
-
-.popular__item:hover {
-    animation: changeColor 5s;
-    animation-fill-mode: forwards;
-}
-
-@keyframes changeColor {
-   to {
-       background-color: #063420;
-   }
 }
 
 .popular__item__picture {
