@@ -66,6 +66,10 @@ input {
     padding: 10px 0 0 0;
 }
 
+.sidebar__checkbox {
+    display: block;
+}
+
 /*Основной контент*/
 
  .content{
