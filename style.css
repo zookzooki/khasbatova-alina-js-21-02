@@ -6,7 +6,7 @@ body {
     background: #1b1b1c;
 }
 
-p, h1, h2 {
+p, h1, h2, body {
     margin: 0;
 }
 
@@ -16,6 +16,7 @@ a {
 
 .page-container {
     width: 100%;
+    height: 100vh;
     display: grid;
     grid-template-columns: [col-1] 240px [col-2] 1fr;
     grid-template-rows: [row-1] 50px [row-2] 1fr [row-3] 50px;
@@ -66,6 +67,10 @@ input {
     padding: 10px 0 0 0;
 }
 
+.sidebar__checkbox {
+    display: block;
+}
+
 /*Основной контент*/
 
  .content{
@@ -84,7 +89,7 @@ input {
 
 .content__fish-type{
     display: flex;
-    flex-direction: row;
+    /*flex-direction: row;*/
     flex-wrap: wrap;
     justify-content: flex-start;
     align-content: space-between;
@@ -94,10 +99,10 @@ input {
 
 .fish-type__item {
     height: 50px;
-    margin-left: 10px;
+    margin-right: 10px;
+    margin-top: 10px;
     flex-grow: 1;
     padding: 8px 10px;
-    width: 45%;
 }
 
 .category-item p {
@@ -113,7 +118,7 @@ input {
 
 .popular__item {
     height: 50px;
-    margin: 0 0 10px 10px;
+    margin: 0 10px 10px 0;
     padding: 8px 10px;
     width: 170px;
 }
@@ -145,8 +150,7 @@ input {
     grid-area: footer;
     color:  #74747e;
     font-size: 14px;
-    margin-top: 10px;
-    padding: 10px;
+    padding: 20px 10px;
 }
 
 .footer__copyright {
