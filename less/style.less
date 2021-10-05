@@ -5,10 +5,10 @@
 
 body {
     font-family: sans-serif;
+}
 
-    &__theme_dark {
-        background: #1b1b1c;
-    }
+.body__theme_dark {
+    background: #1b1b1c;
 }
 
 p, h1, h2, body {
@@ -122,9 +122,8 @@ input {
      padding: 20px 0;
      flex-grow: 2;
 
-     &__text, h2 {
+     &__text {
          padding-left: 20px;
-         color: #74747e;
      }
 
      &__text__theme_dark {
@@ -233,7 +232,7 @@ input {
         float: left;
     }
 
-    $__theme_default {
+    &__theme_default {
         background: @defaultBlockColor;
     }
 
