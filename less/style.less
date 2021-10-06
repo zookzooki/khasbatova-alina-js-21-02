@@ -1,0 +1,255 @@
+@firmColor: #0a9c5c;
+@defaultBackgroundColor: #c2c2c4;
+@defaultBlockColor: #f1f0f0;
+@darkBlockColor: #424141;
+
+body {
+    font-family: sans-serif;
+}
+
+.body__theme_dark {
+    background: #1b1b1c;
+}
+
+p, h1, h2, body {
+    margin: 0;
+}
+
+h2 {
+    padding-left: 20px;
+}
+
+a {
+    color: #1895fa;
+}
+
+.page-container {
+    width: 100%;
+    height: 100vh;
+    display: grid;
+    grid-template-columns: [col-1] 240px [col-2] 1fr;
+    grid-template-rows: [row-1] 50px [row-2] 1fr [row-3] 50px;
+    grid-template-areas:
+        "header header"
+        ". content"
+        "footer footer";
+    grid-row-gap: 10px;
+    grid-column-gap: 10px;
+}
+
+/*Заголовок*/
+
+.header {
+    grid-area: header;
+    background: @firmColor;
+    display: flex;
+    align-items: center;
+    color: white;
+    padding-left: 10px;
+    font-weight: 600;
+    justify-content: space-between;
+    z-index: -1;
+
+    &__theme_dark {
+        background: #063420;
+        color: @defaultBackgroundColor;
+    }
+
+    &__text {
+        font-size: 20px;
+    }
+}
+
+.outer_circle {
+    background-image: linear-gradient(
+            to bottom, rgb(6, 52, 32) 0%,
+            rgb(241, 240, 240) 100%);
+    position: absolute;
+    top: -5px;
+    bottom: -5px;
+    right: -5px;
+    left: -5px;
+    z-index: -1;
+    border-radius: 50%;
+    animation: spinner 3s linear 0s 2;
+}
+
+.inner_circle {
+    position: relative;
+    margin: 5%;
+    min-width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background: #0a9c5c;
+}
+
+@keyframes spinner {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/*Сайдбар*/
+
+input {
+    margin-left: 20px;
+}
+
+.sidebar {
+    &__fish-type {
+        font-weight: 600;
+        margin: 0 10px;
+        padding: 10px 0 0 0;
+    }
+
+    &__checkbox {
+        display: block;
+    }
+
+    &__theme_default {
+        background: @defaultBlockColor;
+    }
+
+    &__theme_dark {
+        background: @darkBlockColor;
+        color: @defaultBackgroundColor;
+    }
+}
+
+/*Основной контент*/
+
+ .content{
+     grid-area: content;
+     padding: 20px 0;
+     flex-grow: 2;
+
+     &__text {
+         padding-left: 20px;
+     }
+
+     &__text__theme_dark {
+         color: @defaultBackgroundColor;
+     }
+
+     &__fish-type{
+         display: flex;
+         flex-wrap: wrap;
+         justify-content: flex-start;
+         align-content: space-between;
+         margin: 20px 0;
+         align-items: center;
+     }
+ }
+
+.fish-type__item {
+    height: 50px;
+    margin-right: 10px;
+    margin-top: 10px;
+    flex-grow: 1;
+    padding: 8px 10px;
+
+    &__theme_default {
+        background: @defaultBlockColor;
+    }
+
+    &__theme_dark {
+        background: @darkBlockColor;
+        color: @defaultBackgroundColor;
+    }
+}
+
+.popular {
+    display: flex;
+    margin-top: 20px;
+    flex-wrap: wrap;
+    justify-content: space-between;
+
+    &__item {
+        height: 50px;
+        margin: 0 10px 10px 0;
+        padding: 8px 10px;
+        width: 170px;
+
+        &:hover {
+            animation: changeColor 5s;
+            animation-fill-mode: forwards;
+        }
+
+        &__picture {
+            width: 50px;
+            height: 50px;
+            background: @defaultBackgroundColor;
+        }
+
+        &__name {
+            position: relative;
+            left: 60px;
+            top: -50px;
+        }
+
+        &__button {
+            background: @defaultBackgroundColor;
+            border: @defaultBackgroundColor;
+            height: 20px;
+            position: relative;
+            top: -39px;
+            left: 60px;
+        }
+
+        &__theme_default {
+            background: @defaultBlockColor;
+        }
+
+        &__theme_dark {
+            background: @darkBlockColor;
+            color: @defaultBackgroundColor;
+        }
+    }
+}
+
+.popular_text__theme_dark {
+    color: @defaultBackgroundColor;
+}
+
+@keyframes changeColor {
+    to {
+        background-color: #6ca88e;
+    }
+}
+
+/*Футер*/
+
+.footer {
+    grid-area: footer;
+    color:  #74747e;
+    font-size: 14px;
+    padding: 20px 10px;
+
+    &__copyright {
+        text-align: right;
+    }
+
+    &__contacts {
+        float: left;
+    }
+
+    &__theme_default {
+        background: @defaultBlockColor;
+    }
+
+    &__theme_dark {
+        background: @darkBlockColor;
+        color: @defaultBackgroundColor;
+    }
+}
+
+@media (max-width: 520px) {
+    .sidebar {
+        display: none;
+    }
+    .page-container {
+        grid-template-areas:
+        "header header"
+        "content content"
+        "footer footer";
+    }
+}
