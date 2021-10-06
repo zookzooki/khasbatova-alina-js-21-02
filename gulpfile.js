@@ -23,4 +23,4 @@ gulp.task('less:watch', function () {
     gulp.watch('./less/**/*.less', gulp.series('less'))
 })
 
-gulp.task('default', gulp.parallel('less:watch', 'serve'))
+gulp.task('default', gulp.parallel('less', 'less:watch', 'serve'))
