@@ -6,7 +6,7 @@ data1.forEach((el) => {
         res.push(el);
     }
 });
-console.log(res);
+console.log(`#1: ${res}`);
 
 // 2. На вход поступает массив, реверсировать значения (подобно методу reverse) метод reverse не использовать.
 const data2 = [0, 1, 4, 5, 3, 8, 6, 1];
@@ -14,7 +14,7 @@ const result = data2.reduce((res, el) => {
     res.unshift(el);
     return res;
 }, []);
-console.log(result);
+console.log(`#2: ${result}`);
 
 // 3. На вход поступает массив, содержащий массивы, в которых хранится два элемента.
 // Преобразовать массив в объект, где ключами являются нулевой индекс вложенныхых массивов, а значениями являются элементы с индексом один.
@@ -28,7 +28,7 @@ let sum = 0;
 for (let key in data4) {
     sum += data4[key];
 }
-console.log(sum);
+console.log(`#4: ${sum}`);
 
 // 5. На вход поступает массив с числами, вывести среднее арифметическое элементов массива.
 const data5 = [0, 1, 3, 4];
@@ -36,7 +36,7 @@ const summary = data5.reduce((res, el) => {
     res += el;
     return res;
 }, 0);
-console.log(summary/data5.length);
+console.log(`#5: ${summary/data5.length}`);
 
 // 6. Создать функцию-конструктор для объекта "калькулятор", объект должен иметь поле, хранящее текущее значение и методы сложения,
 // вычитания, умножения и деления, принимающие число и манипулирующий свойством значения в соответствии с назначением метода, а так же функцию, сбрасывающую значение в ноль.
@@ -94,7 +94,7 @@ const limitArr = (arr, start, end) => {
         return (start < end) ? start <= el && el <=  end : end <= el && el <= start;
     });
 };
-console.log(limitArr(data8, 2, 5));
+console.log(`#8: ${limitArr(data8, 2, 5)}`);
 
 // 9. Функция принимает две строки. Вывести true, если строки являются анаграммами, в противном случае false
 const isAnagramma = (firstStr, secondStr) => {
@@ -103,19 +103,19 @@ const isAnagramma = (firstStr, secondStr) => {
     }
     return false;
 }
-console.log(isAnagramma('лето', 'тело'));
+console.log(`#9: ${isAnagramma('лето', 'тело')}`);
 
 // 10. Создать объект, выводящий в консоль все ключи и значения объекта в формате "ключ: значение" через запятую
 // (считать, что значением ключа объекта не может быть объектом или массивом, содержащими объекты) сама функция в консоль выводиться не должна.
-function TestObject(a, b, c) {
+function TestObject10(a, b, c) {
    this.a = a;
    this.b = b;
    this.c = c;
    this.logInfo = () => {
        console.log(`a: ${this.a}, b: ${this.b}, c: ${this.c}`)
    }
-};
-const test10 = new TestObject(1, 2, 3);
+}
+const test10 = new TestObject10(1, 2, 3);
 test10.logInfo();
 
 // 11. Создать функцию-конструктор для объекта, содержащего методы serProp (установить значение свойства),
@@ -131,7 +131,7 @@ function TestObject() {
             enumerable,
         });
     }
-};
-const test4 = new TestObject();
-test4.serProp('name', 'Oleg',{ writable: false })
-console.log(Object.getOwnPropertyDescriptors(test4));
+}
+const test11 = new TestObject();
+test11.serProp('name', 'Oleg',{ writable: false })
+console.log(Object.getOwnPropertyDescriptors(test11));
