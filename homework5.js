@@ -122,16 +122,16 @@ test10.logInfo();
 // метод принимает ключ (строка), значение (произвольное) и объект со свойствами writable, configurable, enumerable
 // (разрешение перезаписи свойства, разрешение перечисления свойства и разрешение удаления свойства). Если какое-то из свойств в объекте отсутствует, действие должно быть разрешено
 
-// function TestObject() {
-//     this.serProp = (key, value, { writable, configurable, enumerable } = {}) => {
-//         Object.defineProperty(this, key, {
-//             value,
-//             writable,
-//             configurable,
-//             enumerable,
-//         });
-//     }
-// };
-// const test4 = new TestObject();
-// test4.serProp('name', 'Oleg',{ writable: false })
-// console.log(Object.getOwnPropertyDescriptors(test4));
+function TestObject() {
+    this.serProp = function (key, value, { writable=true, configurable=true, enumerable=true } = {}) {
+        Object.defineProperty(this, key, {
+            value,
+            writable,
+            configurable,
+            enumerable,
+        });
+    }
+};
+const test4 = new TestObject();
+test4.serProp('name', 'Oleg',{ writable: false })
+console.log(Object.getOwnPropertyDescriptors(test4));
