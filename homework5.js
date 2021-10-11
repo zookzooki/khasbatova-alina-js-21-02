@@ -107,16 +107,19 @@ console.log(`#9: ${isAnagramma('лето', 'тело')}`);
 
 // 10. Создать объект, выводящий в консоль все ключи и значения объекта в формате "ключ: значение" через запятую
 // (считать, что значением ключа объекта не может быть объектом или массивом, содержащими объекты) сама функция в консоль выводиться не должна.
-function TestObject10(a, b, c) {
-   this.a = a;
-   this.b = b;
-   this.c = c;
-   this.logInfo = () => {
-       console.log(`a: ${this.a}, b: ${this.b}, c: ${this.c}`)
-   }
+const testObject10 = {
+    a: 1,
+    b: [1, 2 ,3],
+    c: 'abc',
+    d: {e: 2},
+
+   logInfo: function () {
+       const arr = [['a', testObject10.a], ['b', testObject10.b], ['c', testObject10.c], ['d', testObject10.d]];
+       const res10 = arr.filter((el) => typeof el[1] !== 'object').map(el => el.join(': ')).join(', ');
+       console.log(res10);
+   },
 }
-const test10 = new TestObject10(1, 2, 3);
-test10.logInfo();
+testObject10.logInfo();
 
 // 11. Создать функцию-конструктор для объекта, содержащего методы serProp (установить значение свойства),
 // метод принимает ключ (строка), значение (произвольное) и объект со свойствами writable, configurable, enumerable
