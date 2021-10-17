@@ -41,36 +41,32 @@ function Parrot(name) {
 
 const animal = new Animal('животное');
 Object.defineProperties(animal, {
-    eat: { enumerable: false },
-    say: { enumerable: false },
+    eat: { enumerable: false, writable: false, configurable:false },
+    say: { enumerable: false, writable: false, configurable:false },
     rename: { enumerable: false },
 });
-Object.freeze(animal);
 
 const cat = new Cat('Ириска');
 Object.defineProperties(cat, {
-    say: { enumerable: false },
-    hunt: { enumerable: false },
-    eat: { enumerable: false },
+    say: { enumerable: false, writable: false, configurable:false },
+    hunt: { enumerable: false, writable: false, configurable:false },
+    eat: { enumerable: false, writable: false, configurable:false },
     rename: { enumerable: false },
 });
-Object.freeze(cat);
 
 const dog = new Dog('Шарик');
 Object.defineProperties(dog, {
-    say: { enumerable: false },
-    eat: { enumerable: false },
+    say: { enumerable: false, writable: false, configurable:false },
+    eat: { enumerable: false, writable: false, configurable:false },
     rename: { enumerable: false },
 });
-Object.freeze(dog);
 
 const parrot = new Parrot('Гоша');
 Object.defineProperties(parrot, {
-    say: { enumerable: false },
-    eat: { enumerable: false },
+    say: { enumerable: false, writable: false, configurable:false },
+    eat: { enumerable: false, writable: false, configurable:false },
     rename: { enumerable: false },
 });
-Object.freeze(parrot);
 
 animal.eat();
 console.log(cat.name);
