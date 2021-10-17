@@ -15,13 +15,13 @@ const animal = {
     }
 };
 Object.defineProperties(animal, {
-    eat: { enumerable: false },
-    say: { enumerable: false },
+    eat: { enumerable: false, writable: false, configurable:false },
+    say: { enumerable: false, writable: false, configurable:false },
     rename: { enumerable: false },
 });
-Object.freeze(animal);
 
 const cat = {
+    name: 'обычный кот',
     say() {
         console.log('мяу-мяу');
     },
@@ -31,32 +31,31 @@ const cat = {
 }
 Object.setPrototypeOf(cat, animal);
 Object.defineProperties(cat, {
-    say: { enumerable: false },
-    hunt: { enumerable: false },
+    say: { enumerable: false, writable: false, configurable:false },
+    hunt: { enumerable: false, writable: false, configurable:false },
 });
-Object.freeze(cat);
 
 const dog = {
+    name: 'пес',
     say() {
         console.log('гав-гав');
     },
 }
 Object.setPrototypeOf(dog, animal);
 Object.defineProperties(dog, {
-    say: { enumerable: false },
+    say: { enumerable: false, writable: false, configurable:false },
 });
-Object.freeze(dog);
 
 const parrot = {
+    name: 'попугай',
     say() {
         console.log('чирик');
     },
 }
 Object.setPrototypeOf(parrot, animal);
 Object.defineProperties(parrot, {
-    say: { enumerable: false },
+    say: { enumerable: false, writable: false, configurable:false },
 });
-Object.freeze(parrot);
 
 animal.say();
 animal.eat();
