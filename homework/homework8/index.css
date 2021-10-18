@@ -1,0 +1,40 @@
+table {
+    border: 1px solid black;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+    width: 350px;
+}
+
+td, th {
+    padding: 5px;
+    border: 2px solid black;
+    height: 15px;
+}
+
+p {
+    margin: 0;
+}
+
+.new-user {
+    margin-bottom: 20px;
+}
+
+.theme-blue{
+    background-color: #689dc7;
+    color: #7d0314;
+}
+
+.theme-red{
+    background-color: #ef6a7b;
+    color: #0d6223;
+}
+
+.theme-green{
+    background-color: #48db99;
+    color: #023663;
+}
+
+.delete{
+    margin: 0 auto;
+    display: block;
+}
