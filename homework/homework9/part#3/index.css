@@ -1,0 +1,44 @@
+table {
+    border: 1px solid black;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+    width: 350px;
+}
+
+td, th {
+    padding: 5px;
+    border: 2px solid black;
+    height: 15px;
+}
+
+p {
+    margin: 0;
+}
+
+.arrow {
+    position: relative;
+    width: 15px;
+    height: 15px;
+    cursor: pointer;
+}
+.arrow:after {
+    position: absolute;
+    top: 2px;
+    left: 9px;
+    content: '';
+    display: block;
+    width: 7px;
+    height: 7px;
+    border-left: 3px solid gray;
+    border-bottom: 3px solid gray;
+    transform: rotate(315deg);
+}
+
+.arrow__active:after {
+    border-color: black;
+}
+
+.table__header {
+    display: flex;
+    justify-content: center;
+}
