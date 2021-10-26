@@ -1,0 +1,31 @@
+.gallery {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin-top: 20px;
+}
+
+.gallery img {
+    width: 30%;
+    margin: 10px;
+}
+
+#loader {
+    width: 150px;
+    height: 10px;
+    position: relative;
+    margin-left: 15px;
+    background-color: #c2c2c4;
+}
+#loader-box {
+    position: relative;
+    width: 10px;
+    height: 10px;
+    background-color: coral;
+}
+
+.header {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: left;
+}
