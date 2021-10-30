@@ -1,0 +1,39 @@
+.content {
+    grid-area: content;
+    padding: 20px 0;
+    flex-grow: 2;
+}
+.content__text {
+    padding-left: 20px;
+}
+.content__text__theme_dark {
+    color: #c2c2c4;
+}
+.content__fish-type {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-content: space-between;
+    margin: 20px 0;
+    align-items: center;
+}
+.fish-type__item {
+    height: 50px;
+    margin-right: 10px;
+    margin-top: 10px;
+    flex-grow: 1;
+    padding: 8px 10px;
+}
+.fish-type__item__theme_default {
+    background: #f1f0f0;
+}
+.fish-type__item__theme_dark {
+    background: #424141;
+    color: #c2c2c4;
+}
+.popular {
+    display: flex;
+    margin-top: 20px;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}

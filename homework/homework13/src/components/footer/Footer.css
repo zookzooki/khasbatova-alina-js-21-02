@@ -1,0 +1,19 @@
+.footer {
+    grid-area: footer;
+    color: #74747e;
+    font-size: 14px;
+    padding: 20px 10px;
+}
+.footer__copyright {
+    text-align: right;
+}
+.footer__contacts {
+    float: left;
+}
+.footer__theme_default {
+    background: #f1f0f0;
+}
+.footer__theme_dark {
+    background: #424141;
+    color: #c2c2c4;
+}
