@@ -14,7 +14,7 @@ let peopleArr: Array<ManType>;
 let nextHref: string;
 let prevHref: string;
 
-const prepareData = (resp: Resp) => {
+const prepareData = (resp: Resp): void => {
     nextHref = resp.next;
     prevHref = resp.previous;
     if (!nextHref) {
@@ -40,7 +40,7 @@ swapi.getPeople((resp: Resp) => {
     prepareData(resp);
 });
 
-const updateStrTable = (sortArr: Array<ManType>) => {
+const updateStrTable = (sortArr: Array<ManType>): void => {
     document.querySelector('table').removeChild(document.querySelector('tbody'));
     document.querySelector('thead').after(createPeopleList(sortArr));
     document.querySelectorAll('.arrow').forEach(el => el.classList.remove('arrow__active'));
