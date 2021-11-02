@@ -1,0 +1,15 @@
+.header {
+    grid-area: header;
+    background: #0a9c5c;
+    display: flex;
+    align-items: center;
+    color: white;
+    padding-left: 10px;
+    font-weight: 600;
+    justify-content: space-between;
+    z-index: -1;
+}
+
+.header__text {
+    font-size: 20px;
+}
