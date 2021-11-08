@@ -1,0 +1,17 @@
+li {
+    position: relative;
+    cursor: pointer;
+    padding: 3px;
+    list-style-type: none;
+    background: #eee;
+}
+
+li:nth-child(odd) {
+    background: #b2bec3;
+}
+.delete {
+     position: absolute;
+     right: 0;
+     top: 0;
+     padding: 4px;
+ }
