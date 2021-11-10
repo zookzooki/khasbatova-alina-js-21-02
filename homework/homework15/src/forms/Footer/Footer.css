@@ -1,0 +1,26 @@
+.footer {
+    max-width: 750px;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+}
+
+.paging {
+    /*float: left;*/
+}
+
+.paging__button {
+    margin: 1px;
+    height: 30px;
+    font-size: 18px;
+    border-radius: 5px;
+}
+
+select {
+    font-size: 16px;
+}
+
+.selected {
+    background-color: #5b8bbb;
+    color: aliceblue;
+}
