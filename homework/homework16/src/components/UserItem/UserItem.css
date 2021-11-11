@@ -1,0 +1,31 @@
+.user {
+    background: white;
+    width: 370px;
+    margin: 5px;
+    display: inline-flex;
+}
+
+.user__picture {
+    margin: 10px;
+}
+
+.user__picture img {
+    width: 75px;
+}
+
+.user__info{
+    margin-top: 10px;
+}
+
+.user__name {
+    font-weight: bold;
+    color: #424141;
+}
+
+.user_dark {
+    background-color: #1b1b1c;
+}
+
+.user_dark .user__name {
+    color: #cdc9c9;
+}

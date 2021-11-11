@@ -1,0 +1,23 @@
+.component-with-helper {
+    position: relative;
+}
+
+.component-with-helper__helper {
+    position: absolute;
+    top: -1.5em;
+    background-color: #1b1b1c;
+    border: 1px solid black;
+    border-radius: 5px;
+    color: #fff;
+}
+
+.component-with-helper:hover .component-with-helper__helper {
+    animation: tooltips 300ms ease-out forwards;
+}
+
+@keyframes tooltips {
+    to {
+        opacity: .9;
+        transform: translate(0, -20%);
+    }
+}
