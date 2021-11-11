@@ -3,6 +3,7 @@ import './UserList.css';
 import UserItem from '../../components/UserItem/UserItem';
 import { UserType, PostListResponse } from '../../types/dumMyApiResponses';
 import ComponentWithHelper from '../../wrappers/ComponentWithHelper';
+import useOnceOnMount from '../../hooks/useOnceOnMount';
 import { getUsersInfo } from '../../api/dumMyApi';
 import { PAGE_DEFAULT } from '../../constants/api/dumMyApi';
 import { Footer } from '../Footer/Footer';
@@ -38,9 +39,7 @@ const UserList = () => {
     });
   };
 
-  useEffect(() => {
-    loadUsers(PAGE_DEFAULT, 10);
-  }, []);
+  useOnceOnMount(() => loadUsers(PAGE_DEFAULT, 10));
 
   useEffect(() => {
     updateUsers(page, limit);
