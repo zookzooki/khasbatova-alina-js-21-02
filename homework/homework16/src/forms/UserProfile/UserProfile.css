@@ -1,0 +1,19 @@
+.profile {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 15px;
+    align-items: flex-start;
+}
+
+.profile img {
+    width: auto;
+    margin-right: 15px;
+}
+
+.backButton {
+    margin: 15px;
+    height: 30px;
+    font-size: 18px;
+    border-radius: 5px;
+}

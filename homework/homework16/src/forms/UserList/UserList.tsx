@@ -1,19 +1,20 @@
 import React, { useEffect, useState } from 'react';
+
 import './UserList.css';
 import UserItem from '../../components/UserItem/UserItem';
 import { UserType, PostListResponse } from '../../types/dumMyApiResponses';
 import ComponentWithHelper from '../../wrappers/ComponentWithHelper';
 import useOnceOnMount from '../../hooks/useOnceOnMount';
 import { getUsersInfo } from '../../api/dumMyApi';
-import { PAGE_DEFAULT } from '../../constants/api/dumMyApi';
+import { PAGE_DEFAULT, LIMIT_DEFAULT } from '../../constants/api/dumMyApi';
 import { Footer } from '../Footer/Footer';
 import { ThemeContext, ThemeContextState } from '../../contexts/ThemeContext';
 
 const UserList = () => {
   const [users, setUsers] = useState([] as Array<UserType>);
-  const [page, setPage] = useState(1);
-  const [limit, setLimit] = useState(10);
-  const [pagesCountArr, setPagesCountArr] = useState([] as Array<number>);
+  const [page, setPage] = useState(PAGE_DEFAULT);
+  const [limit, setLimit] = useState(LIMIT_DEFAULT);
+  const [total, setTotal] = useState(0);
 
   const updatePageNumber = (count: number): void => {
     setPage(count);
@@ -30,16 +31,12 @@ const UserList = () => {
   const loadUsers = (pageNumber: number, limitNumber: number) => {
     getUsersInfo(pageNumber, limitNumber, (resp: PostListResponse) => {
       setUsers(resp.data);
-      const arr = [];
-      for (let i = 0; i < resp.total / limitNumber; i += 1) {
-        arr.push(i + 1);
-      }
-      setPagesCountArr(arr);
+      setTotal(resp.total);
       updatePageNumber(pageNumber);
     });
   };
 
-  useOnceOnMount(() => loadUsers(PAGE_DEFAULT, 10));
+  useOnceOnMount(() => loadUsers(PAGE_DEFAULT, LIMIT_DEFAULT));
 
   useEffect(() => {
     updateUsers(page, limit);
@@ -72,10 +69,11 @@ const UserList = () => {
                     : 'Список загружается'}
                 </div>
                 <Footer
-                  pagesCountArr={pagesCountArr}
                   updatePageNumber={updatePageNumber}
                   updateLimitNumber={updateLimitNumber}
                   page={page}
+                  pageSize={limit}
+                  total={total}
                 />
               </div>
             )
