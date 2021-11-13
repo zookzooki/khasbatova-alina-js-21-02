@@ -13,4 +13,21 @@ export interface UserType {
   picture?: string;
 }
 
+export interface ProfileResponse {
+  id?: string;
+  title?: string;
+  firstName?: string;
+  lastName?: string;
+  gender?: string;
+  email?: string;
+  dateOfBirth?: string;
+  registerDate?: string;
+  phone?: string;
+  picture?: string;
+}
+
 export interface PostListResponse extends ListResponseType<UserType> {}
+
+export interface ResponseError {
+  error: string;
+}
