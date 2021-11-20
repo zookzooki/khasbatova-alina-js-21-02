@@ -1,13 +1,17 @@
 {
-  "name": "homework16",
+  "name": "homework",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@ant-design/icons": "^4.7.0",
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^11.2.7",
     "@testing-library/user-event": "^12.8.3",
     "@types/prop-types": "^15.7.4",
+    "antd": "^4.16.13",
     "history": "^5.0.1",
+    "moment": "^2.29.1",
+    "moment-ru": "^2.24.2",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-router": "^5.2.1",
@@ -65,6 +69,7 @@
     ]
   },
   "devDependencies": {
+    "@types/antd": "^1.0.0",
     "@types/history": "^4.7.9",
     "@types/react": "^17.0.31",
     "@types/react-dom": "^17.0.10",

@@ -7,6 +7,7 @@ import './App.css';
 import { Header } from './components/Header/Header';
 import UserList from './forms/UserList/UserList';
 import UserProfile from './forms/UserProfile/UserProfile';
+import { Registration } from './forms/Registration/Registration';
 import { ThemeContextProvider, ThemeContext, ThemeContextState } from './contexts/ThemeContext';
 
 const App = () => (
@@ -21,6 +22,9 @@ const App = () => (
                     <Switch>
                       <Route path="/user/:id">
                         <UserProfile />
+                      </Route>
+                      <Route path="/register">
+                        <Registration />
                       </Route>
                       <Route path="/user">
                         <UserList />

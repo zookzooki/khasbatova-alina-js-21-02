@@ -34,14 +34,14 @@ const UserProfile = () => {
       {loading ? 'Идёт загрузка'
         : (
           <div className="profile">
-            <img alt="аватарка" src={user.picture} />
+            { (user.picture) ? <img alt="аватарка" src={user.picture} /> : ''}
             <div>
-              <p>{`${user.title} ${user.firstName} ${user.lastName}`}</p>
-              <p>{user.gender}</p>
-              <p>{`Date of birth: ${user.dateOfBirth}`}</p>
+              <p>{`${user.title ? user.title : ''} ${user.firstName} ${user.lastName}`}</p>
+              { user.gender ? <p>{user.gender}</p> : ''}
+              <p>{`Date of birth: ${user.dateOfBirth ? user.dateOfBirth : '-'}`}</p>
               <p>{`Register date: ${user.registerDate}`}</p>
               <p>{`Email: ${user.email}`}</p>
-              <p>{`Phone: ${user.phone}`}</p>
+              <p>{`Phone: ${user.phone ? user.phone : '-'}`}</p>
             </div>
           </div>
         )}
