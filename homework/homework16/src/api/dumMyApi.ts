@@ -24,6 +24,28 @@ const doGetRequest = <T>(
     .finally(finalCallback);
 };
 
+const doPostRequest = <T>(
+  path: string,
+  body: T,
+  callback: (resp: T) => void,
+  errorCallback?: (resp: ResponseError) => void,
+  finalCallback?: () => void,
+) => {
+  const url = new URL(path, BASE_URL);
+  const bodyInfo = JSON.stringify(body);
+  fetch(url.toString(), {
+    method: 'POST',
+    headers: new Headers({
+      [APP_ID_FIELD]: APP_ID_VALUE,
+      'Content-Type': 'application/json',
+    }),
+    body: bodyInfo,
+  }).then((resp) => resp.json())
+    .then(callback)
+    .catch(errorCallback)
+    .finally(finalCallback);
+};
+
 export const getUsersInfo = (
   page: number,
   limit: number,
@@ -50,4 +72,13 @@ export const getUserById = (
   finalCallback?: () => void,
 ) => {
   doGetRequest(`${USER_URL}/${id}`, callback, errorCallback, finalCallback);
+};
+
+export const createUser = (
+  body: ProfileResponse,
+  callback: (resp: ProfileResponse) => void,
+  errorCallback?: (resp: ResponseError) => void,
+  finalCallback?: () => void,
+) => {
+  doPostRequest(`${USER_URL}/create`, body, callback, errorCallback, finalCallback);
 };
