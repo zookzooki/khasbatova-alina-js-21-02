@@ -1,57 +1,37 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Redirect } from 'react-router-dom';
 import {
   Form, Input, Button, Select, DatePicker,
 } from 'antd';
 import 'moment/locale/ru';
 import locale from 'antd/es/date-picker/locale/ru_RU';
-
+import { useDispatch, useSelector } from 'react-redux';
 import 'antd/dist/antd.css';
+
 import './Registration.css';
 import { ProfileResponse } from '../../types/dumMyApiResponses';
-import { createUser } from '../../api/dumMyApi';
+import { sendData } from '../../actions/RegistrationActions';
 
 const { Option } = Select;
 
-const prefixSelector = (
-  <Form.Item name="prefix" noStyle>
-    <Select
-      style={{
-        width: 70,
-      }}
-    >
-      <Option value="7">+7</Option>
-      <Option value="8">+8</Option>
-    </Select>
-  </Form.Item>
-);
-
 export const Registration = () => {
+  const dispatch = useDispatch();
+  const redirect = useSelector((state: any) => state.registration.redirect);
+  const userId = useSelector((state: any) => state.registration.userId);
   const [form] = Form.useForm();
-  const [redirect, setRedirect] = useState(false);
-  const [userId, setUserId] = useState('');
 
-  const onFinish = (values: ProfileResponse) => {
-    const {
-      firstName, lastName, email, phone, gender, picture,
-    } = values;
-    const isDateOfBirth = values.dateOfBirth;
-    let dateOfBirth;
-    if (isDateOfBirth) {
-      const fullDate = new Date(isDateOfBirth);
-      dateOfBirth = `${fullDate.getMonth() + 1}/${fullDate.getDate()}/${fullDate.getFullYear()}`;
-      console.log(fullDate, dateOfBirth);
-    }
-    console.log('dateOfBirth', dateOfBirth);
-    createUser({
-      firstName, lastName, email, phone, gender, dateOfBirth, picture,
-    }, (resp: ProfileResponse) => {
-      if (resp && resp.id) {
-        setUserId(resp.id);
-        setRedirect(true);
-      }
-    });
-  };
+  const prefixSelector = (
+    <Form.Item name="prefix" noStyle>
+      <Select
+        style={{
+          width: 70,
+        }}
+      >
+        <Option value="7">+7</Option>
+        <Option value="8">+8</Option>
+      </Select>
+    </Form.Item>
+  );
 
   return redirect
     ? (<Redirect to={`/user/${userId}`} />)
@@ -69,7 +49,7 @@ export const Registration = () => {
           remember: true,
         }}
         form={form}
-        onFinish={onFinish}
+        onFinish={(value: ProfileResponse) => dispatch(sendData(value))}
         autoComplete="off"
       >
         <Form.Item
@@ -140,13 +120,6 @@ export const Registration = () => {
             <Option value="other">другой</Option>
           </Select>
         </Form.Item>
-
-        <Form.Item
-          wrapperCol={{
-            offset: 4,
-            span: 16,
-          }}
-        />
         <Form.Item
           label="Аватарка"
           name="picture"
