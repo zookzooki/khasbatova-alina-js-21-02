@@ -5,8 +5,8 @@ import {
 
 import './App.css';
 import { Header } from './components/Header/Header';
-import UserList from './forms/UserList/UserList';
-import UserProfile from './forms/UserProfile/UserProfile';
+import { UserList } from './forms/UserList/UserList';
+import { UserProfile } from './forms/UserProfile/UserProfile';
 import { Registration } from './forms/Registration/Registration';
 import { ThemeContextProvider, ThemeContext, ThemeContextState } from './contexts/ThemeContext';
 

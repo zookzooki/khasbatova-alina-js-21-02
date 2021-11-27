@@ -9,7 +9,6 @@ export const Header = () => {
   const [currentItem, setCurrentItem] = useState('list');
 
   const handleClick = (e: any) => {
-    console.log(e, e.key);
     setCurrentItem(e.key);
   };
 
