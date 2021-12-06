@@ -1,0 +1,65 @@
+.header {
+  position: fixed;
+  z-index: 1;
+  width: 100%;
+  background: #fff;
+
+  .logo {
+    float: left;
+    width: 120px;
+    height: 64px;
+    background: rgba(255, 255, 255, 0.2);
+  }
+
+  .divider {
+    height: 30px;
+  }
+
+  .profileHeader {
+    display: flex;
+    align-items: center;
+  }
+
+  .profileInfo {
+    display: flex;
+    align-items: baseline;
+    height: 64px;
+  }
+
+  .profileAvatar{
+    margin-right: 5px;
+  }
+
+  .ant-menu-item-selected, .ant-menu-item:hover {
+    color: rgba(0, 0, 0, 0.85) !important;
+  }
+
+  .ant-menu-item-selected::after, .ant-menu-item:hover::after {
+    border: none !important;
+  }
+
+  .ant-menu-item-selected a, .ant-menu-item:hover a {
+    color: rgba(0, 0, 0, 0.85);
+  }
+}
+
+.header_dark {
+  background: #001529;
+
+  .profileInfo {
+    color: rgba(255, 255, 255, 0.65);
+  }
+
+  .ant-menu-item-selected, .ant-menu-item:hover {
+    background-color: #001529 !important;
+  }
+
+  .ant-menu-item-selected::after, .ant-menu-item:hover::after {
+    border: none !important;
+  }
+
+  .ant-menu-item-selected > span > a, .ant-menu-item:hover > span > a {
+    color: rgba(255, 255, 255, 0.65);
+  }
+}
+

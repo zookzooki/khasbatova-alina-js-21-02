@@ -1,0 +1,121 @@
+$border-radius: 10px;
+$color: #1b1b1c;
+
+.ant-picker-dropdown{
+  z-index: 9999;
+}
+
+.edit_profile__modal {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  z-index: 9999;
+  display: flex;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.75);
+  animation-name: appear;
+  animation-duration: 300ms;
+  padding-top: 30px;
+
+  .modal-close {
+    cursor: pointer;
+    position: fixed;
+    top: 20px;
+    right: 15px;
+    color: #adadad;
+    font-size: 20px;
+  }
+
+  .modal-dialog {
+    width: 100%;
+    max-width: 500px;
+    background: #e8e8ea;
+    border-radius: $border-radius;
+    position: relative;
+    margin: 0 30px;
+    max-height: calc(100vh - 100px);
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    -webkit-animation-name: animatetop;
+    -webkit-animation-duration: 0.4s;
+    animation-name: slide-in;
+    animation-duration: 0.5s;
+    padding: 15px;
+
+    .modal-header {
+      display: flex;
+      align-items: center;
+      padding: 30px 1rem;
+      justify-content: space-between;
+
+      .owner {
+        display: flex;
+        //justify-content: space-between;
+        //align-items: ;
+
+        .owner_info {
+          color: $color;
+          font-weight: bold;
+        }
+
+        .avatar {
+          margin-right: 5px;
+
+        }
+      }
+
+      .publish_date {
+        color: #7e7e87;
+      }
+    }
+
+    .modal-body {
+      overflow: auto;
+
+      .picture {
+        text-align: center;
+        //height: 200px;
+
+        img {
+          max-height: calc(60vh - 120px);
+          //width: 80%;
+          max-width:80%;
+          height:auto;
+          border-radius: $border-radius;
+          margin-bottom: 20px;
+        }
+
+        .noPicture {
+          font-size: 100px;
+        }
+      }
+
+      //input {
+      //  margin: 5px;
+      //}
+    }
+  }
+}
+
+@keyframes appear {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes slide-in {
+  from {
+    transform: translateY(-150px);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
