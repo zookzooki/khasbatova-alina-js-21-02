@@ -25,6 +25,11 @@ export const PostList = () => {
     dispatch(loadComments(post, PAGE_DEFAULT));
   };
 
+  const onChange = (page: number) => {
+    dispatch(updateCurPage(page));
+    dispatch(load(page));
+  };
+
   useEffect(() => {
     dispatch(load(curPage));
   }, []);
@@ -65,7 +70,7 @@ export const PostList = () => {
                             pageSize={LIMIT_DEFAULT}
                             total={total}
                             current={curPage}
-                            onChange={(page: number) => dispatch(updateCurPage(page))}
+                            onChange={onChange}
                           />
                         </div>
 

@@ -113,8 +113,8 @@ export const EditProfile = () => {
               label="Телефон"
               rules={[
                 {
-                  pattern: new RegExp(/^[0-9()-]+$/),
-                  message: 'Допустимые символы: цифры, -, (, )',
+                  pattern: new RegExp(/^(8|\+7)+[\d]+$/),
+                  message: 'Должен начинаться с 8 или +7 и содержать только цифры',
                 },
               ]}
             >
