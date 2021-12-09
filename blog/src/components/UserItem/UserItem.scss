@@ -1,0 +1,42 @@
+$border-radius: 10px;
+
+.user {
+  background: white;
+  width: 170px;
+  height: 170px;
+  margin: 5px;
+  text-align: center;
+  padding: 7px;
+  border-radius: $border-radius;
+}
+
+.user__picture {
+  margin: 10px;
+}
+
+.user__picture img {
+  width: 100px;
+  border-radius: $border-radius;
+}
+
+.unknownUser {
+  font-size: 70px;
+  color: #9d9da5;
+}
+
+.user__info{
+  margin: 5px 0;
+}
+
+.user__name {
+  color: #424141;
+  font-size: 14px;
+}
+
+.user_dark {
+  background-color: #1b1b1c;
+}
+
+.user_dark .user__name {
+  color: #cdc9c9;
+}

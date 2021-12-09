@@ -1,0 +1,56 @@
+$border-radius: 10px;
+$color: #1b1b1c;
+
+.post {
+  background: white;
+  width: 170px;
+  height: 170px;
+  margin: 5px;
+  text-align: center;
+  padding: 7px;
+  border-radius: $border-radius;
+
+  .post__header {
+    display: grid;
+    grid-template-areas: "avatar owner_info" "avatar publish_date";
+
+    .avatar {
+      grid-area: avatar;
+    }
+
+    .owner_info {
+      grid-area: owner_info;
+      font-size: 8px;
+      color: $color;
+      margin: 0;
+      text-align: left;
+    }
+
+    .publish_date {
+      grid-area: publish_date;
+      font-size: 8px;
+      color: #7e7e87;
+      text-align: left;
+    }
+  }
+
+  .post__picture {
+    margin: 5px;
+
+    img {
+      height: 80px;
+      border-radius: $border-radius;
+    }
+
+    .noPicture {
+      font-size: 70px;
+      color: #9d9da5;
+    }
+  }
+
+  .post__content{
+    font-size: 8px;
+    color: $color;
+    text-align: left;
+  }
+}

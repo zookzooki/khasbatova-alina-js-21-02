@@ -1,0 +1,32 @@
+.signIn {
+  background: #fff;
+  padding: 24px;
+  min-height: 450px;
+
+  h1 {
+    text-align: center;
+  }
+
+  .confirm {
+    background-color: black;
+    border-color: black;
+  }
+
+  .error {
+    text-align: center;
+    color: red;
+  }
+
+  .no_account {
+    text-align: center;
+    color: darkgray;
+    font-size: 12px;
+  }
+}
+.signIn_dark {
+  background: #424141;
+
+  h1, label {
+    color: white;
+  }
+}

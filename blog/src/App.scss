@@ -1,0 +1,79 @@
+.App {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+
+  .body {
+    margin: 20px 0;
+
+    .content {
+      padding: 0 50px;
+      margin-top: 64px;
+    }
+
+    .confirm {
+      width: 100%;
+    }
+
+    @media (max-width: 520px) {
+      .content {
+        padding-right: 0;
+        padding-left: 0;
+      }
+    }
+  }
+
+  .footer {
+    display: flex;
+    justify-content: space-between;
+    margin-top: auto;
+    height: 70px;
+    background-color: #fff;
+
+    .switch {
+      display: flex;
+      justify-content: space-between;
+
+      .checker {
+        background-color: black;
+        margin-left: 2px;
+      }
+    }
+
+  }
+}
+
+.App_dark {
+  .body {
+    background-color: #001529;
+  }
+  .footer {
+    background-color: #001529;
+
+    p {
+      color: white;
+    }
+
+    .switch {
+      .checker {
+        background-color: #d4d4d4;
+      }
+    }
+  }
+
+  .ant-layout {
+    background-color: #001529;
+  }
+}
+
+.users_dark, .posts_dark {
+  span {
+    color: white;
+  }
+  input {
+    background-color: #424141 !important;
+  }
+  li {
+    color: white;
+  }
+}

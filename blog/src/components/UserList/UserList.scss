@@ -1,0 +1,18 @@
+.users {
+  .users-list {
+    margin: 10px auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    max-width: 800px;
+  }
+
+  .pagination{
+    text-align: center;
+  }
+}
+
+.error {
+  text-align: center;
+  color: red;
+}
