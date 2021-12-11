@@ -6,6 +6,7 @@ import 'antd/dist/antd.css';
 import { Link } from 'react-router-dom';
 import { TeamOutlined, PictureOutlined, UserOutlined } from '@ant-design/icons';
 import { useSelector, useDispatch } from 'react-redux';
+import { useTranslation } from 'react-i18next';
 
 import './HeaderBlog.scss';
 import { reset } from '../../redux/actions/signInAction';
@@ -20,6 +21,7 @@ export const HeaderBlog = () => {
   const dispatch = useDispatch();
   const isAuth = useSelector((state: any) => state.signIn.isAuth);
   const info = useSelector((state: any) => state.signIn.info);
+  const { t } = useTranslation();
 
   const handleClick = (e: any) => {
     if (e.key === 'signout') {
@@ -63,17 +65,17 @@ export const HeaderBlog = () => {
               >
                 <Menu.Item icon={<TeamOutlined />}>
                   <Link to="/user">
-                    Пользователи
+                    {t('header.users')}
                   </Link>
                 </Menu.Item>
                 <Menu.Item icon={<PictureOutlined />}>
                   <Link to="/post">
-                    Посты
+                    {t('header.posts')}
                   </Link>
                 </Menu.Item>
                 {isAuth
-                  ? <Menu.Item key="signout"><Link to="/signin">Выход</Link></Menu.Item>
-                  : <Menu.Item key="signin"><Link to="/signin">Вход</Link></Menu.Item>}
+                  ? <Menu.Item key="signout"><Link to="/signin">{t('header.logOut')}</Link></Menu.Item>
+                  : <Menu.Item key="signin"><Link to="/signin">{t('header.signIn')}</Link></Menu.Item>}
                 {isAuth
                   ? (
                     <Menu.Item key="profile">
@@ -84,12 +86,11 @@ export const HeaderBlog = () => {
                     <Menu.Item>
                       <Divider className="divider" type="vertical" />
                       <Link to="/signup">
-                        Регистрация
+                        {t('header.signUp')}
                       </Link>
                     </Menu.Item>
                   )}
               </Menu>
-
             </Header>
           )
         }

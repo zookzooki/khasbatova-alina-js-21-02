@@ -1,10 +1,10 @@
 import React from 'react';
 import { Avatar } from 'antd';
 import { UserOutlined, PictureOutlined } from '@ant-design/icons';
+import { useTranslation } from 'react-i18next';
 
 import './PostItem.scss';
 import { EMPTY_STRING } from '../../constants/common';
-import { formatDate } from '../../help/help';
 import ComponentWithHelper from '../../wrappers/ComponentsWithHelper';
 
 interface Props {
@@ -22,9 +22,15 @@ interface Props {
 const PostItem = ({
   id, firstName, lastName, title, avatar, picture, publishDate, text, className,
 }: Props) => {
-  let date;
-  if (publishDate) {
-    date = formatDate(publishDate);
+  const { t } = useTranslation();
+
+  let titleInfo = '';
+  if (title === 'mr') {
+    titleInfo = t('profile.mrTitle');
+  } else if (title === 'ms') {
+    titleInfo = t('profile.msTitle');
+  } else if (title === 'mrs') {
+    titleInfo = t('profile.mrsTitle');
   }
 
   return (
@@ -38,11 +44,11 @@ const PostItem = ({
               }
           </div>
           <p className="owner_info">
-            {`${title} ${firstName} ${lastName}`}
+            {`${titleInfo} ${firstName} ${lastName}`}
           </p>
 
           <p className="publish_date">
-            {date}
+            { publishDate ? t('dateTimeFormat', { date: new Date(publishDate) }) : ''}
           </p>
         </div>
       </ComponentWithHelper>

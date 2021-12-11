@@ -5,6 +5,7 @@ import {
 } from 'antd';
 import 'antd/dist/antd.css';
 import { useDispatch, useSelector } from 'react-redux';
+import { useTranslation } from 'react-i18next';
 
 import './SignIn.scss';
 import { load } from '../../redux/actions/signInAction';
@@ -18,6 +19,7 @@ export const SignIn = () => {
   const error = useSelector((state: any) => state.signIn.error);
   const loading = useSelector((state: any) => state.signIn.loading);
   const redirect = useSelector((state: any) => state.signIn.redirect);
+  const { t } = useTranslation();
 
   const onFinish = (value: CardType) => {
     if (value.id) {
@@ -42,7 +44,7 @@ export const SignIn = () => {
                align="middle"
              >
                <Col sm={12} xs={24}>
-                 <h1>Вход</h1>
+                 <h1>{t('signIn.title')}</h1>
                  <Form
                    form={form}
                    layout="vertical"
@@ -59,19 +61,19 @@ export const SignIn = () => {
                        {
                          required: true,
                          pattern: new RegExp(/^[a-zA-Z0-9]+$/),
-                         message: 'Введите ID из букв и цифр',
+                         message: t('signIn.errorMessage'),
                        },
                      ]}
                    >
-                     <Input placeholder="Введите свой ID" />
+                     <Input placeholder={t('signIn.input')} />
                    </Form.Item>
                    <Form.Item>
                      <Button type="primary" block className="confirm" htmlType="submit">
-                       Войти
+                       {t('signIn.enter')}
                      </Button>
                    </Form.Item>
                  </Form>
-                 <Link to="/signup"><p className="no_account">Еще нет аккаунта? Зарегистрироваться</p></Link>
+                 <Link to="/signup"><p className="no_account">{t('signIn.noAccount')}</p></Link>
                  { error ? <div className="error">{error}</div> : '' }
                </Col>
              </Row>

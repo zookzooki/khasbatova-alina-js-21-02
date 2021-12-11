@@ -1,6 +1,7 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Pagination } from 'antd';
+import { useTranslation } from 'react-i18next';
 
 import './CommentList.scss';
 import { CommentType } from '../../redux/types/dumMyApiResponses';
@@ -17,6 +18,7 @@ export const CommentList = () => {
   const curPage = useSelector((state: any) => state.commentList.curPage);
   const total = useSelector((state: any) => state.commentList.total);
   const post = useSelector((state: any) => state.commentList.post);
+  const { t } = useTranslation();
 
   const onChange = (page: number) => {
     dispatch(load(post, page));
@@ -55,6 +57,6 @@ export const CommentList = () => {
 
           </div>
         )
-        : <p className="no_comments">Еще нет комментариев</p>
+        : <p className="no_comments">{t('comment.noComments')}</p>
   );
 };
