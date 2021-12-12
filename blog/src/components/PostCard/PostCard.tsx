@@ -6,39 +6,14 @@ import { Link } from 'react-router-dom';
 
 import './PostCard.scss';
 import { notVisibleModal } from '../../redux/actions/commentListAction';
-// import { PostType } from '../../redux/types/dumMyApiResponses';
 import { formatDate } from '../../help/help';
 import { CommentList } from '../CommentList/CommentList';
 import ComponentWithHelper from '../../wrappers/ComponentsWithHelper';
 
-// interface ModalProps {
-//   post?: string,
-// }
-
 export const PostCard = () => {
   const dispatch = useDispatch();
-  // const commentList = useSelector((state: any) => state.commentList.list);
-  // const postList = useSelector((state: any) => state.postList.list);
-  // const loading = useSelector((state: any) => state.commentList.loading);
-  // const error = useSelector((state: any) => state.commentList.error);
-  // const curPage = useSelector((state: any) => state.commentList.curPage);
-  // const total = useSelector((state: any) => state.commentList.total);
   const visible = useSelector((state: any) => state.commentList.visibleModal);
   const post = useSelector((state: any) => state.commentList.post);
-  // const postInfo = postList.find((el: PostType) => el?.id === post);
-  //
-  // console.log('###', commentList);
-  // console.log('!!!', post, postInfo.id);
-
-  // useEffect(() => {
-  //   dispatch(load(post));
-  // }, []);
-
-  // useEffect(() => {
-  //   if (post) {
-  //     dispatch(load(post));
-  //   }
-  // }, [curPage]);
 
   const onClose = () => {
     dispatch(notVisibleModal());
@@ -88,7 +63,3 @@ export const PostCard = () => {
     </div>
   );
 };
-
-// PostCard.defaultProps = {
-//   post: '',
-// };

@@ -29,14 +29,15 @@
     margin-top: auto;
     height: 70px;
     background-color: #fff;
+    flex-wrap: wrap;
 
     .switch {
       display: flex;
-      justify-content: space-between;
+      align-items: flex-start;
 
       .checker {
         background-color: black;
-        margin-left: 2px;
+        margin: 0 10px 0 2px;
       }
     }
 

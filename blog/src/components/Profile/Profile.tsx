@@ -3,13 +3,13 @@ import { useParams } from 'react-router-dom';
 import 'antd/dist/antd.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { FormOutlined, UserOutlined } from '@ant-design/icons';
+import { useTranslation } from 'react-i18next';
 
 import './Profile.scss';
 import { load, visibleModal } from '../../redux/actions/profileAction';
 import { EditProfile } from '../EditProfile/EditProfile';
 import { Loader } from '../Loader/Loader';
 import { UserPostList } from '../UserPostList/UserPostList';
-import { formatDateNoTime } from '../../help/help';
 
 interface Params {
   id: string;
@@ -22,8 +22,17 @@ export const Profile = () => {
   const loading = useSelector((state: any) => state.profile.loading);
   const error = useSelector((state: any) => state.profile.error);
   const infoAuth = useSelector((state: any) => state.signIn.info);
+  const { t } = useTranslation();
 
   const isAuth = infoAuth.id === params.id;
+  let title = '';
+  if (info.title === 'mr') {
+    title = t('profile.mrTitle');
+  } else if (info.title === 'ms') {
+    title = t('profile.msTitle');
+  } else if (info.title === 'mrs') {
+    title = t('profile.mrsTitle');
+  }
 
   useEffect(() => {
     dispatch(load(params.id));
@@ -45,24 +54,24 @@ export const Profile = () => {
             </div>
             <div className="user__info">
               <p className="user__name">
-                {`${info.title ? info.title : ''} ${info.firstName} ${info.lastName}`}
+                {`${title} ${info.firstName} ${info.lastName}`}
               </p>
               <div className="additional_info">
                 { info.gender ? <p>{info.gender}</p> : ''}
                 <p>
-                  <span>Дата рождения: </span>
-                  {info.dateOfBirth ? formatDateNoTime(info.dateOfBirth) : '-'}
+                  <span>{`${t('profile.birthDateLabel')}: `}</span>
+                  {info.dateOfBirth ? t('dateFormat', { date: new Date(info.dateOfBirth) }) : '-'}
                 </p>
                 <p>
-                  <span>Дата регистрации: </span>
-                  {formatDateNoTime(info.registerDate)}
+                  <span>{`${t('profile.registrationDateLabel')}: `}</span>
+                  {t('dateFormat', { date: new Date(info.registerDate) })}
                 </p>
                 <p>
                   <span>Email: </span>
                   {info.email}
                 </p>
                 <p>
-                  <span>Телефон: </span>
+                  <span>{`${t('profile.phoneLabel')}: `}</span>
                   {info.phone ? info.phone : '-'}
                 </p>
               </div>
@@ -75,7 +84,7 @@ export const Profile = () => {
 
           <button type="button" className={`edit ${isAuth ? '' : 'notDisplay'}`} onClick={openModal}>
             <FormOutlined />
-            Редактировать
+            {t('profile.editedButton')}
           </button>
         </div>
         <UserPostList id={params.id} />

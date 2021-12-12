@@ -5,9 +5,10 @@ import {
 import { Redirect, Link } from 'react-router-dom';
 import 'antd/dist/antd.css';
 import { useDispatch, useSelector } from 'react-redux';
-import 'moment/locale/ru';
-import locale from 'antd/es/date-picker/locale/ru_RU';
+import enLocale from 'antd/es/date-picker/locale/en_US';
+import ruLocale from 'antd/es/date-picker/locale/ru_RU';
 import moment from 'moment';
+import { useTranslation } from 'react-i18next';
 
 import './SignUp.scss';
 import { create } from '../../redux/actions/signInAction';
@@ -24,6 +25,8 @@ export const SignUp = () => {
   const loading = useSelector((state: any) => state.signIn.loading);
   const redirect = useSelector((state: any) => state.signIn.redirect);
   const info = useSelector((state: any) => state.signIn.info);
+  const { t } = useTranslation();
+  const dateFormat = 'DD.MM.YYYY';
 
   const onFinish = (value: CardType) => {
     dispatch(create(value));
@@ -47,7 +50,7 @@ export const SignUp = () => {
                align="middle"
              >
                <Col sm={12} xs={24}>
-                 <h1>Регистрация</h1>
+                 <h1>{t('signUp.title')}</h1>
                  <Form
                    layout="vertical"
                    initialValues={{
@@ -63,25 +66,25 @@ export const SignUp = () => {
                    autoComplete="off"
                  >
                    <Form.Item
-                     label="Имя"
+                     label={t('signUp.firstNameLabel')}
                      name="firstName"
                      rules={[
                        {
                          required: true,
                          type: 'string',
-                         message: 'Обязательное поле',
+                         message: t('signUp.errorMessage'),
                        },
                      ]}
                    >
                      <Input />
                    </Form.Item>
                    <Form.Item
-                     label="Фамилия"
+                     label={t('signUp.lastNameLabel')}
                      name="lastName"
                      rules={[
                        {
                          required: true,
-                         message: 'Обязательное поле',
+                         message: t('signUp.errorMessage'),
                        },
                      ]}
                    >
@@ -94,41 +97,42 @@ export const SignUp = () => {
                      rules={[
                        {
                          type: 'email',
-                         message: 'Некорректная электронная почта',
+                         message: t('signUp.emailErrorMessage'),
                        },
                        {
                          required: true,
-                         message: 'Обязательное поле',
+                         message: t('signUp.errorMessage'),
                        },
                      ]}
                    >
                      <Input />
                    </Form.Item>
 
-                   <Form.Item name="dateOfBirth" label="Дата рождения">
+                   <Form.Item name="dateOfBirth" label={t('signUp.birthDateLabel')}>
                      <DatePicker
-                       locale={locale}
+                       format={dateFormat}
+                       locale={window.localStorage.i18nextLng.split('-')[0] === 'en' ? enLocale : ruLocale}
                        disabledDate={(current) => current && current > moment().endOf('day')}
                      />
                    </Form.Item>
 
                    <Form.Item
                      name="gender"
-                     label="Пол"
+                     label={t('signUp.genderLabel')}
                    >
-                     <Select placeholder="Ваш пол">
-                       <Option value="female">женский</Option>
-                       <Option value="male">мужской</Option>
-                       <Option value="other">другой</Option>
+                     <Select placeholder={t('signUp.genderLabel')}>
+                       <Option value="female">{t('signUp.femaleType')}</Option>
+                       <Option value="male">{t('signUp.maleType')}</Option>
+                       <Option value="other">{t('signUp.otherType')}</Option>
                      </Select>
                    </Form.Item>
                    <Form.Item>
                      <Button type="primary" htmlType="submit" block className="confirm">
-                       Регистрация
+                       {t('signUp.enter')}
                      </Button>
                    </Form.Item>
                  </Form>
-                 <Link to="/signin"><p className="has_account">Уже есть аккаунт? Войти</p></Link>
+                 <Link to="/signin"><p className="has_account">{t('signUp.haveAccount')}</p></Link>
                  { error ? <div className="error">{error}</div> : '' }
                </Col>
              </Row>

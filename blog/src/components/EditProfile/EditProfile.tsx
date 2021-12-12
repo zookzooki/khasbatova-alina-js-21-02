@@ -2,12 +2,14 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { UserOutlined, CloseOutlined } from '@ant-design/icons';
 import {
-  Form, Input, Button, DatePicker, // Col, Row,
+  Form, Input, Button, DatePicker,
 } from 'antd';
 import 'antd/dist/antd.css';
 import 'moment/locale/ru';
 import moment from 'moment';
-import locale from 'antd/es/date-picker/locale/ru_RU';
+import enLocale from 'antd/es/date-picker/locale/en_US';
+import ruLocale from 'antd/es/date-picker/locale/ru_RU';
+import { useTranslation } from 'react-i18next';
 
 import './EditProfile.scss';
 import { updateProfile, notVisibleModal } from '../../redux/actions/profileAction';
@@ -19,6 +21,7 @@ export const EditProfile = () => {
   const dispatch = useDispatch();
   const visible = useSelector((state: any) => state.profile.visibleModal);
   const info = useSelector((state: any) => state.profile.info);
+  const { t } = useTranslation();
 
   const onClose = () => {
     dispatch(notVisibleModal());
@@ -65,11 +68,11 @@ export const EditProfile = () => {
               labelCol={{ span: 6 }}
               wrapperCol={{ span: 18 }}
               name="picture"
-              label="URL фотографии"
+              label={t('editProfile.urlPhotoLabel')}
               rules={[
                 {
                   type: 'url',
-                  message: 'Допустимые значения: url',
+                  message: t('editProfile.urlPhotoErrorMessage'),
                 },
               ]}
             >
@@ -78,13 +81,13 @@ export const EditProfile = () => {
             <Form.Item
               labelCol={{ span: 6 }}
               wrapperCol={{ span: 18 }}
-              label="Имя"
+              label={t('editProfile.firstNameLabel')}
               name="firstName"
               rules={[
                 {
                   required: true,
                   pattern: new RegExp(/[a-zA-ZA-Яа-яЁё]+$/),
-                  message: 'Обязательное поле состоит только из букв',
+                  message: t('editProfile.nameErrorMessage'),
                 },
               ]}
             >
@@ -93,13 +96,13 @@ export const EditProfile = () => {
             <Form.Item
               labelCol={{ span: 6 }}
               wrapperCol={{ span: 18 }}
-              label="Фамилия"
+              label={t('editProfile.lastNameLabel')}
               name="lastName"
               rules={[
                 {
                   required: true,
                   pattern: new RegExp(/[a-zA-ZA-Яа-яЁё]+$/),
-                  message: 'Обязательное поле состоит только из букв',
+                  message: t('editProfile.nameErrorMessage'),
                 },
               ]}
             >
@@ -110,7 +113,7 @@ export const EditProfile = () => {
               labelCol={{ span: 6 }}
               wrapperCol={{ span: 18 }}
               name="phone"
-              label="Телефон"
+              label={t('editProfile.phoneLabel')}
               rules={[
                 {
                   pattern: new RegExp(/^(8|\+7)+[\d]+$/),
@@ -125,12 +128,12 @@ export const EditProfile = () => {
               labelCol={{ span: 6 }}
               wrapperCol={{ span: 18 }}
               name="dateOfBirth"
-              label="Дата рождения"
+              label={t('editProfile.birthDateLabel')}
             >
 
               <DatePicker
                 format={dateFormat}
-                locale={locale}
+                locale={window.localStorage.i18nextLng.split('-')[0] === 'en' ? enLocale : ruLocale}
                 getPopupContainer={(triggerNode: any) => triggerNode.parentNode}
                 disabledDate={(current) => current && current > moment().endOf('day')}
               />
@@ -140,7 +143,7 @@ export const EditProfile = () => {
               labelCol={{ span: 6 }}
               wrapperCol={{ span: 18 }}
               name="gender"
-              label="Пол"
+              label={t('editProfile.genderLabel')}
               rules={[
                 {
                   pattern: new RegExp(/^(female|male|other)$/),
@@ -152,7 +155,7 @@ export const EditProfile = () => {
             </Form.Item>
             <Form.Item>
               <Button type="primary" htmlType="submit" className="confirm">
-                Сохранить
+                {t('editProfile.saveButton')}
               </Button>
             </Form.Item>
           </Form>
