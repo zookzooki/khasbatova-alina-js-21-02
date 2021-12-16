@@ -1,0 +1,9 @@
+#input {
+    width: 80%;
+    margin: 20px;
+    min-height: 50px;
+}
+
+.error{
+    color: red;
+}
