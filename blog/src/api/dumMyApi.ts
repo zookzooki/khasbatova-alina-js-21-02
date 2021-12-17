@@ -4,26 +4,25 @@ import {
 import { METHOD_GET } from '../constants/api/common';
 import { CardType } from '../redux/types/dumMyApiResponses';
 
-const doGetRequest = (
+const doGetRequest = async (
   path: string,
   searchParams?: Record<string, any>,
 ) => {
   const url = new URL(path, BASE_URL);
   url.search = new URLSearchParams(searchParams).toString();
-  return fetch(url.toString(), {
+  const resp = await fetch(url.toString(), {
     method: METHOD_GET,
     headers: new Headers({
       [APP_ID_FIELD]: APP_ID_VALUE,
     }),
-  }).then((resp) => {
-    if (resp.ok) {
-      return resp.json();
-    }
-    throw new Error('Bad response from server');
   });
+  if (resp.ok) {
+    return resp.text();
+  }
+  throw new Error(resp.statusText);
 };
 
-const doChangeRequest = <T>(
+const doChangeRequest = async <T>(
   method: string,
   path: string,
   body: T,
@@ -39,43 +38,41 @@ const doChangeRequest = <T>(
     body: bodyInfo,
   }).then((resp) => {
     if (resp.ok) {
-      return resp.json();
+      return resp.text();
     }
-    throw new Error('Bad response from server');
+    throw new Error(resp.statusText);
   });
 };
 
-export const getUsersInfo = (
+export const getUsersInfo = async (
   page: number,
   limit: number,
 ) => doGetRequest(
   USER_URL,
   {
-    [PAGE_FIELD]: page - 1,
+    [PAGE_FIELD]: page,
     [LIMIT_FIELD]: limit,
   },
 );
 
-export const getUserById = (
-  id: string,
-) => doGetRequest(`${USER_URL}/${id}`);
+export const getUserById = async (id: string) => doGetRequest(`${USER_URL}/${id}`);
 
-export const createUser = (
-  body: CardType,
-) => doChangeRequest('POST', `${USER_URL}/create`, body);
+export const getUserByIdShort = async (id: string) => doGetRequest(`${USER_URL}/signin/${id}`);
 
-export const updateUser = (
+export const createUser = (body: CardType) => doChangeRequest('POST', `${USER_URL}/create`, body);
+
+export const updateUser = async (
   id: string,
   body: CardType,
 ) => doChangeRequest('PUT', `${USER_URL}/${id}`, body);
 
-export const getPostList = (
+export const getPostList = async (
   page: number,
   limit: number,
 ) => doGetRequest(
   POST_URL,
   {
-    [PAGE_FIELD]: page - 1,
+    [PAGE_FIELD]: page,
     [LIMIT_FIELD]: limit,
   },
 );
@@ -87,19 +84,19 @@ export const getCommentsByPost = (
 ) => doGetRequest(
   `${POST_URL}/${id}/${COMMENT_URL}`,
   {
-    [PAGE_FIELD]: page - 1,
+    [PAGE_FIELD]: page,
     [LIMIT_FIELD]: limit,
   },
 );
 
-export const getPostsByUser = (
+export const getPostsByUser = async (
   id: string,
   page: number,
   limit: number,
 ) => doGetRequest(
   `${USER_URL}/${id}/${POST_URL}`,
   {
-    [PAGE_FIELD]: page - 1,
+    [PAGE_FIELD]: page,
     [LIMIT_FIELD]: limit,
   },
 );

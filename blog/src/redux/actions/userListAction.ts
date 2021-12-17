@@ -47,13 +47,17 @@ export const reset = () => (dispatch: Dispatch) => {
   dispatch(resetInfoAction());
 };
 
-export const load = (pageNum: number) => (dispatch: Dispatch) => {
-  dispatch(showLoadingAction());
-  getUsersInfo(pageNum, LIMIT_DEFAULT).then((resp: any) => {
-    dispatch(loadSuccessAction(resp.data));
-    dispatch(setPageAction(resp.page + 1));
-    dispatch(setTotalAction(resp.total));
-  })
-    .catch((error: Error) => dispatch(loadErrorAction(error.message)))
-    .finally(() => dispatch(hideLoadingAction()));
+export const load = (pageNum: number) => async (dispatch: Dispatch) => {
+  try {
+    dispatch(showLoadingAction());
+    const resp = await getUsersInfo(pageNum, LIMIT_DEFAULT);
+    const data = JSON.parse(resp);
+    dispatch(loadSuccessAction(data.data));
+    dispatch(setPageAction(data.page));
+    dispatch(setTotalAction(data.total));
+  } catch (e: any) {
+    dispatch(loadErrorAction(e.message));
+  } finally {
+    dispatch(hideLoadingAction());
+  }
 };

@@ -69,14 +69,19 @@ export const notVisibleModal = () => (dispatch: Dispatch) => {
   dispatch(notVisibleModalAction());
 };
 
-export const load = (post: PostType, pageNum: number) => (dispatch: Dispatch) => {
-  dispatch(showLoadingAction());
-  dispatch(setPostAction(post));
-  getCommentsByPost(post.id ? post.id : '', pageNum, LIMIT_DEFAULT).then((resp: any) => {
-    dispatch(loadSuccessAction(resp.data));
-    dispatch(setPageAction(resp.page + 1));
-    dispatch(setTotalAction(resp.total));
-  })
-    .catch((error: Error) => dispatch(loadErrorAction(error.message)))
-    .finally(() => dispatch(hideLoadingAction()));
+export const load = (post: PostType, pageNum: number) => async (dispatch: Dispatch) => {
+  try {
+    dispatch(showLoadingAction());
+    dispatch(setPostAction(post));
+    const resp = await getCommentsByPost(post.id ? post.id : '', pageNum, LIMIT_DEFAULT);
+    const data = JSON.parse(resp);
+    console.log('RESP', data);
+    dispatch(loadSuccessAction(data.data));
+    dispatch(setPageAction(data.page));
+    dispatch(setTotalAction(data.total));
+  } catch (e: any) {
+    dispatch(loadErrorAction(e.message));
+  } finally {
+    dispatch(hideLoadingAction());
+  }
 };
