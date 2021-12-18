@@ -1,5 +1,4 @@
 import { Dispatch } from 'redux';
-import moment from 'moment';
 
 import { ProfileAction } from '../types/actions';
 import {
@@ -50,27 +49,26 @@ export const notVisibleModal = () => (dispatch: Dispatch) => {
   dispatch(notVisibleModalAction());
 };
 
-export const load = (id: string) => (dispatch: Dispatch) => {
-  dispatch(showLoadingAction());
-  getUserById(id).then((resp: any) => {
-    dispatch(loadSuccessAction(resp));
-  })
-    .catch((error: Error) => dispatch(loadErrorAction(error.message)))
-    .finally(() => dispatch(hideLoadingAction()));
+export const load = (id: string) => async (dispatch: Dispatch) => {
+  try {
+    dispatch(showLoadingAction());
+    const resp = await getUserById(id);
+    dispatch(loadSuccessAction(JSON.parse(resp)));
+  } catch (e: any) {
+    dispatch(loadErrorAction(e));
+  } finally {
+    dispatch(hideLoadingAction());
+  }
 };
 
-export const updateProfile = (id: string, values: CardType) => (dispatch: Dispatch) => {
-  const {
-    firstName, lastName, phone, gender, picture,
-  } = values;
-
-  const dateOfBirth = moment(values.dateOfBirth).toISOString();
-  dispatch(showLoadingAction());
-  updateUser(id, {
-    firstName, lastName, phone, gender, picture, dateOfBirth,
-  }).then((resp: any) => {
-    dispatch(loadSuccessAction(resp));
-  })
-    .catch((error: Error) => dispatch(loadErrorAction(error.message)))
-    .finally(() => dispatch(hideLoadingAction()));
+export const updateProfile = (id: string, values: CardType) => async (dispatch: Dispatch) => {
+  try {
+    dispatch(showLoadingAction());
+    const resp = await updateUser(id, values);
+    dispatch(loadSuccessAction(JSON.parse(resp)));
+  } catch (e: any) {
+    dispatch(loadErrorAction(e.message));
+  } finally {
+    dispatch(hideLoadingAction());
+  }
 };

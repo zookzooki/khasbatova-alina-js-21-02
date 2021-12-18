@@ -1,4 +1,4 @@
-export const BASE_URL = 'https://dummyapi.io/data/v1/';
+export const BASE_URL = 'http://localhost:3007/api/';
 
 export const USER_URL = 'user';
 export const POST_URL = 'post';
