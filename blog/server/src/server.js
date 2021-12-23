@@ -13,7 +13,7 @@ app.use(express.json());
 app.use(context.middleware('request'));
 app.use((req, res, next) => {
   context.set('uuid', generateUUID());
-  res.type('text/plain')
+  res.type('application/json')
   next()
 })
 
@@ -25,4 +25,6 @@ app.use((err, req, res, next) => {
   next()
 });
 
-app.listen(port, host, () => console.log('App started', host, port));
+const server = app.listen(port, host, () => console.log('App started', host, port));
+
+module.exports = server;

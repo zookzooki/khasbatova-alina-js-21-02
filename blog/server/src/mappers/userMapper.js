@@ -1,5 +1,8 @@
 class UserMapper {
   mapThirdPartyUserToUserShort(user) {
+    if (!user) {
+      return null;
+    }
     return {
       id: user.id,
       picture: user.picture,
@@ -8,6 +11,9 @@ class UserMapper {
   }
 
   mapThirdPartyUserToUser(user) {
+    if (!user) {
+      return null;
+    }
     return {
       id: user.id,
       title: user.title,
@@ -23,6 +29,9 @@ class UserMapper {
   }
 
   mapThirdPartyPostList(posts) {
+    if (!posts) {
+      return null;
+    }
     const postList = posts.data.map(post => ({
       id: post.id,
       image: post.image,
@@ -36,6 +45,9 @@ class UserMapper {
   }
 
   mapThirdPartyUserList(users) {
+    if (!users) {
+      return null;
+    }
     return {
       data: users.data,
       page: users.page+1,

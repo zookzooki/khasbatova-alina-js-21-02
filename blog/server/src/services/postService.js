@@ -21,7 +21,7 @@ class PostService {
             }
         } catch(e) {
             logger.info(format(messages.GET_POST_LIST_ERROR, 400, e));
-            return res.status(400).send(e.message);
+            return res.status(400).send(JSON.stringify(e.message));
         }
     }
 
@@ -40,7 +40,7 @@ class PostService {
             }
         } catch(e) {
             logger.info(format(messages.GET_COMMENTS_BY_POST_ERROR, 400, e));
-            return res.status(400).send(e.message);
+            return res.status(400).send(JSON.stringify(e.message));
         }
     }
 }

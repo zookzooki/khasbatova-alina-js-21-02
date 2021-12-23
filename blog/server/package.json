@@ -4,7 +4,8 @@
   "main": "index.js",
   "scripts": {
     "start": "nodemon src/server",
-    "debug": "node --inspect src/server"
+    "debug": "node --inspect src/server",
+    "test": "jest"
   },
   "author": "",
   "license": "ISC",
@@ -17,5 +18,16 @@
     "simple-node-logger": "^21.8.12",
     "string-format": "^2.0.0",
     "uuid": "^8.3.2"
+  },
+  "devDependencies": {
+    "jest": "^27.4.4",
+    "supertest": "^6.1.6"
+  },
+  "jest": {
+    "testRegex": "(/tests/.*|(\\.|/)(test|spec))\\.jsx?$",
+    "collectCoverage": true,
+    "collectCoverageFrom": [
+      "src/**/**/*.js"
+    ]
   }
 }
