@@ -22,7 +22,7 @@ class UserService {
             }
         } catch(e) {
             logger.info(format(messages.GET_USER_BY_ID_SHORT_ERROR, 400, e));
-            return res.status(400).send(e.message);
+            return res.status(400).send(JSON.stringify(e.message));
         }
     }
 
@@ -41,7 +41,7 @@ class UserService {
             }
         } catch(e) {
             logger.info(format(messages.GET_USER_BY_ID_ERROR, 400, e));
-            return res.status(400).send(e.message);
+            return res.status(400).send(JSON.stringify(e.message));
         }
     }
 
@@ -68,7 +68,7 @@ class UserService {
             }
         } catch(e) {
             logger.info(format(messages.CREATE_USER_ERROR, 400, e));
-            return res.status(400).send(e.message);
+            return res.status(400).send(JSON.stringify(e.message));
         }
     }
 
@@ -87,7 +87,7 @@ class UserService {
             }
         } catch(e) {
             logger.info(format(messages.GET_POST_BY_USER_ERROR, 400, e));
-            return res.status(400).send(e.message);
+            return res.status(400).send(JSON.stringify(e.message));
         }
     }
 
@@ -114,7 +114,7 @@ class UserService {
             }
         } catch(e) {
             logger.info(format(messages.UPDATE_USER_ERROR, 400, e));
-            return res.status(400).send(e.message);
+            return res.status(400).send(JSON.stringify(e.message));
         }
     }
 
@@ -133,7 +133,7 @@ class UserService {
             }
         } catch(e) {
             logger.info(format(messages.GET_USER_LIST_ERROR, 400, e));
-            return res.status(400).send(e.message);
+            return res.status(400).send(JSON.stringify(e.message));
         }
     }
 }
