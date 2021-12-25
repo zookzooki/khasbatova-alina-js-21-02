@@ -1,5 +1,5 @@
 import {
-  APP_ID_FIELD, APP_ID_VALUE, USER_URL, POST_URL, COMMENT_URL, BASE_URL, LIMIT_FIELD, PAGE_FIELD,
+  USER_URL, POST_URL, COMMENT_URL, BASE_URL, LIMIT_FIELD, PAGE_FIELD,
 } from '../constants/api/dumMyApi';
 import { METHOD_GET } from '../constants/api/common';
 import { CardType } from '../redux/types/dumMyApiResponses';
@@ -8,18 +8,19 @@ const doGetRequest = async (
   path: string,
   searchParams?: Record<string, any>,
 ) => {
-  const url = new URL(path, BASE_URL);
-  url.search = new URLSearchParams(searchParams).toString();
-  const resp = await fetch(url.toString(), {
-    method: METHOD_GET,
-    headers: new Headers({
-      [APP_ID_FIELD]: APP_ID_VALUE,
-    }),
-  });
-  if (resp.ok) {
-    return resp.text();
-  }
-  throw new Error(resp.statusText);
+    try {
+        const url = new URL(path, BASE_URL);
+        url.search = new URLSearchParams(searchParams).toString();
+        const resp = await fetch(url.toString(), {
+            method: METHOD_GET,
+        });
+        if (resp.ok) {
+            return resp.text();
+        }
+        throw new Error(resp.statusText);
+    } catch (e) {
+        throw new Error(e.message);
+    }
 };
 
 const doChangeRequest = async <T>(
@@ -32,7 +33,6 @@ const doChangeRequest = async <T>(
   return fetch(url.toString(), {
     method,
     headers: new Headers({
-      [APP_ID_FIELD]: APP_ID_VALUE,
       'Content-Type': 'application/json',
     }),
     body: bodyInfo,
