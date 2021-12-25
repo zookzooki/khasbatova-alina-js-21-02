@@ -27,7 +27,7 @@
     "testRegex": "(/tests/.*|(\\.|/)(test|spec))\\.jsx?$",
     "collectCoverage": true,
     "collectCoverageFrom": [
-      "src/**/**/*.js"
+      "**/src/**/**/*.js"
     ]
   }
 }

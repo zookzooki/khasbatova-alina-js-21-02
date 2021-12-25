@@ -1,7 +1,7 @@
 const context = require('request-context');
 
 const options = {
-    logDirectory:'./logs',
+    logDirectory: `${__dirname}/../logs`,
     fileNamePattern: '<DATE>.log',
     dateFormat: 'DD.MM.YYYY',
 }

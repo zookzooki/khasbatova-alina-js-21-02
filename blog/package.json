@@ -10,6 +10,8 @@
     "@testing-library/user-event": "^12.8.3",
     "@types/flux": "^3.1.11",
     "@types/prop-types": "^15.7.4",
+    "@types/react-redux": "^7.1.20",
+    "enzyme-to-json": "^3.6.2",
     "antd": "^4.16.13",
     "flux": "^4.0.2",
     "history": "^5.0.1",
@@ -37,6 +39,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
+    "test:coverage": "npm test -- --coverage --watchAll",
     "eslint": "eslint ./src",
     "eslint:fix": "eslint ./src --fix",
     "eject": "react-scripts eject"
@@ -85,18 +88,30 @@
     ]
   },
   "devDependencies": {
+    "@types/enzyme": "^3.10.10",
     "@types/antd": "^1.0.0",
     "@types/history": "^4.7.9",
+    "@types/jest": "^27.0.3",
     "@types/react": "^17.0.31",
     "@types/react-dom": "^17.0.10",
     "@types/react-router": "^5.1.17",
     "@types/react-router-dom": "5.3.0",
+    "@types/redux-mock-store": "^1.0.3",
     "@typescript-eslint/eslint-plugin": "^5.1.0",
     "@typescript-eslint/parser": "^5.1.0",
+    "@wojtekmaj/enzyme-adapter-react-17": "0.4.1",
+    "enzyme": "^3.11.0",
     "eslint-config-airbnb": "^18.2.1",
     "eslint-config-airbnb-typescript": "^14.0.1",
     "less": "^4.1.2",
+    "jest-fetch-mock": "^3.0.3",
     "prop-types": "^15.7.2",
+    "redux-mock-store": "^1.5.4",
     "typescript": "^4.4.4"
+  },
+  "jest": {
+    "snapshotSerializers": [
+      "enzyme-to-json/serializer"
+    ]
   }
 }
