@@ -55,7 +55,7 @@ export const load = (id: string) => async (dispatch: Dispatch) => {
     const resp = await getUserById(id);
     dispatch(loadSuccessAction(JSON.parse(resp)));
   } catch (e: any) {
-    dispatch(loadErrorAction(e));
+    dispatch(loadErrorAction(e.message));
   } finally {
     dispatch(hideLoadingAction());
   }
